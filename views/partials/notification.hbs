@@ -1,0 +1,17 @@
+{{#if notify}}
+<section id='errorBox' class="notifications error">
+    <p>{{this}}</p>
+</section>
+{{/if}}
+<script language="JavaScript">
+    if (document.querySelector("#errorBox")) {
+        const elements = {
+            error: document.querySelector("#errorBox"),
+        };
+
+        setTimeout(hideError, 3000);
+        function hideError() {
+            elements.error.style.display = "none";
+        }
+    }
+</script>

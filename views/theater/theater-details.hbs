@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Express Retake Exam January 2019</title>
+    <link href="./styles/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
+    {{>header}}
+
+    <section class="notifications error">
+        <p>Message...</p>
+    </section>
+
+
+    <main>
+        <div class="container">
+            {{#with play}}
+            <section class="details">
+                <h1>Theater title: {{this.title}}</h1>
+                <div>
+                    <img src="{{this.image}}" />
+                </div>
+            </section>
+
+            <section class="details">
+                <h3>Theater Description</h3>
+                <p>{{this.description}}</p>
+                {{/with}}
+                <div class="buttons">
+                    {{#if canEdit}}
+                    {{#with play}}
+                    <a class="btn delete" href="/details/delete/{{this._id}}">Delete</a>
+                    <a class="btn edit" href="/edit/{{this._id}}">Edit</a>
+                    {{/with}}
+                    {{else}}
+                    {{#if liked}}
+                    <span class="liked">You have already liked this play!</span>
+                    {{else}}
+                    {{#with play}}
+                    <a class="btn like" href="/details/like/{{this._id}}">Like</a>
+                    {{/with}}
+                    {{/if}}
+                    {{/if}}
+                </div>
+            </section>
+        </div>
+    </main>
+
+    {{>footer}}
+
+</body>
+
+</html>
